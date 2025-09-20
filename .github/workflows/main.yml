@@ -3,7 +3,7 @@ name: golang-pipeline
 on:
   push:
     branches: [ main ]
-    tags: [ 'v*' ]
+    tags: [ 'v*' ]   # при пуше тегов, например v1.0.0
 
 jobs:
   test:
