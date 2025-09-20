@@ -61,4 +61,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/REPO_NAME:${{ github.ref_name }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/final-CI-CD:${{ github.ref_name }}
