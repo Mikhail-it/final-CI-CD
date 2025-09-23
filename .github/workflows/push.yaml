@@ -3,7 +3,7 @@ name: golang-pipeline
 on:
   push:
     branches: [ main ]
-    tags: [ 'v*' ]   # при пуше тегов, например v1.0.0
+    tags: [ 'v*' ]
 
 jobs:
   test:
@@ -36,16 +36,11 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@v5.5.1
-        with:
-          images: mikhail107/final-ci-cd
-
       - name: Build and push Docker Image
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/final-ci-cd:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/final-ci-cd:${{ github.ref_name }}
