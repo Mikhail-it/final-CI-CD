@@ -42,5 +42,5 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/final-ci-cd:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/final-ci-cd:${{ github.ref_name }}
+            mikhail107/final-ci-cd:latest
+            mikhail107/final-ci-cd:${{ github.ref_name }}
